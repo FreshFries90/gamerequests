@@ -23,6 +23,7 @@ model Publisher {
   name      String
   email     String
   contacts  Contact[]
+  language  String
   games     Game[]?
 }
 
