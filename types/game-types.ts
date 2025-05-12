@@ -11,6 +11,7 @@ export interface Contact {
 	salutation: string;
 	firstName: string;
 	lastName: string;
+	language: string;
 	formOfAddress: string;
 	publisherId: number;
 	publisher?: Publisher;

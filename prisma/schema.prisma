@@ -31,7 +31,8 @@ model Contact {
   salutation    String   
   firstName     String
   lastName      String
-  formOfAddress String  
+  formOfAddress String
+  language      String
   publisher     Publisher @relation(fields: [publisherId], references: [id])
   publisherId   Int
 }
