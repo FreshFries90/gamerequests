@@ -4632,15 +4632,15 @@ export namespace Prisma {
 
   export type PublisherWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    email?: string
     AND?: PublisherWhereInput | PublisherWhereInput[]
     OR?: PublisherWhereInput[]
     NOT?: PublisherWhereInput | PublisherWhereInput[]
     name?: StringFilter<"Publisher"> | string
-    email?: StringFilter<"Publisher"> | string
     language?: StringFilter<"Publisher"> | string
     contacts?: ContactListRelationFilter
     games?: GameListRelationFilter
-  }, "id">
+  }, "id" | "email">
 
   export type PublisherOrderByWithAggregationInput = {
     id?: SortOrder
