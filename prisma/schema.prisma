@@ -1,15 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL") // uses connection pooling
-}
-
 // Nach jeder Änderung am Schema:
 // npx prisma migrate dev --name nameDerÄnderung
 
@@ -17,3 +8,43 @@ datasource db {
 // npx prisma studio
 
 // Tabellenname PascalCase und Singular
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // oder "mysql" oder "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Publisher {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String
+  contacts  Contact[]
+  games     Game[]?
+}
+
+model Contact {
+  id            Int      @id @default(autoincrement())
+  salutation    String   
+  firstName     String
+  lastName      String
+  formOfAddress String  
+  publisher     Publisher @relation(fields: [publisherId], references: [id])
+  publisherId   Int
+}
+
+model Game {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  releaseDate DateTime?
+  consoles    String[]?  
+  tags        String[]? 
+  imageUrls   String[]?   
+  videoUrls   String[]?   
+  publisher   Publisher  @relation(fields: [publisherId], references: [id])
+  publisherId Int
+}
