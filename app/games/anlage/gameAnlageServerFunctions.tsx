@@ -2,19 +2,25 @@
 
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
-
 import prisma from '@/lib/prisma';
 
-// 1. Schema definieren
 const formSchema = zfd.formData({
 	name: zfd.text(z.string().max(100)),
-	email: zfd.text(z.string().email()),
-	language: zfd.text(z.string()),
+	description: zfd.text(z.string().max(1000)),
+	releaseDate: zfd.text(
+		z.string().refine((date) => !isNaN(Date.parse(date)), {
+			message: 'Ungültiges Datum',
+		})
+	),
+	players: zfd.text(z.string()),
+	consoles: zfd.repeatableOfType(z.string()).optional(),
+	tags: zfd.repeatableOfType(z.string()).optional(),
+	imageUrls: zfd.repeatableOfType(z.string()).optional(),
+	videoUrls: zfd.repeatableOfType(z.string()).optional(),
+	publisherId: zfd.text(z.string().regex(/^\d+$/)).transform(Number),
 });
 
-// 2. Server Action
 export async function addGame(formData: FormData) {
-	// 2.1 Daten parsen
 	const result = formSchema.safeParse(formData);
 
 	if (!result.success) {
@@ -22,29 +28,65 @@ export async function addGame(formData: FormData) {
 		return { success: false, message: 'Ungültige Eingaben' };
 	}
 
-	const { name, email, language } = result.data;
+	const {
+		name,
+		description,
+		releaseDate,
+		players,
+		consoles = [],
+		tags = [],
+		imageUrls = [],
+		videoUrls = [],
+		publisherId,
+	} = result.data;
 
-	// 3. Prüfen ob E-Mail schon existiert
-	const existing = await prisma.publisher.findUnique({
-		where: { email },
+	const existing = await prisma.game.findUnique({
+		where: {
+			name_publisherId: {
+				name,
+				publisherId,
+			},
+		},
 	});
 
 	if (existing) {
-		return { success: false, message: 'Diese E-Mail wurde bereits verwendet.' };
+		return {
+			success: false,
+			message: 'Dieses Spiel existiert bereits.',
+		};
 	}
 
-	// 4. In DB eintragen
-	await prisma.publisher.create({
+	await prisma.game.create({
 		data: {
 			name,
-			email,
-			language,
+			description,
+			releaseDate: new Date(releaseDate),
+			players,
+			consoles,
+			tags,
+			imageUrls,
+			videoUrls,
+			publisherId,
 		},
 	});
 
 	return {
 		success: true,
-		message:
-			'Publisher erfolgreich eingetragen! Du hast genauere Kontaktinfos? Jetzt <a href="/kontakt/anlage">eintragen</a> ',
+		message: 'Spiel erfolgreich eingetragen!',
 	};
+}
+
+export async function getPublisherOptions() {
+	const publishers = await prisma.publisher.findMany({
+		orderBy: { name: 'asc' },
+		select: {
+			id: true,
+			name: true,
+		},
+	});
+
+	return publishers.map((p) => ({
+		value: p.id,
+		label: p.name,
+	}));
 }

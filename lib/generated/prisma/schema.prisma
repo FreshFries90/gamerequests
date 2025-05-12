@@ -51,4 +51,6 @@ model Game {
   videoUrls   String[]  @default([])
   publisher   Publisher @relation(fields: [publisherId], references: [id])
   publisherId Int
+
+  @@unique([name, publisherId])
 }

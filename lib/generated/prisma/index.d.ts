@@ -4764,6 +4764,7 @@ export namespace Prisma {
 
   export type GameWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name_publisherId?: GameNamePublisherIdCompoundUniqueInput
     AND?: GameWhereInput | GameWhereInput[]
     OR?: GameWhereInput[]
     NOT?: GameWhereInput | GameWhereInput[]
@@ -4777,7 +4778,7 @@ export namespace Prisma {
     videoUrls?: StringNullableListFilter<"Game">
     publisherId?: IntFilter<"Game"> | number
     publisher?: XOR<PublisherScalarRelationFilter, PublisherWhereInput>
-  }, "id">
+  }, "id" | "name_publisherId">
 
   export type GameOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5191,6 +5192,11 @@ export namespace Prisma {
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
+  }
+
+  export type GameNamePublisherIdCompoundUniqueInput = {
+    name: string
+    publisherId: number
   }
 
   export type GameCountOrderByAggregateInput = {
