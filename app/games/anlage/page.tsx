@@ -16,7 +16,7 @@ export default function GameCreateForm() {
 
 	useEffect(() => {
 		async function loadOptions() {
-			const options = await getPublisherOptions(); // sollte via API kommen!
+			const options = await getPublisherOptions();
 			setPublisherOptions(options);
 		}
 		loadOptions();
@@ -92,6 +92,8 @@ export default function GameCreateForm() {
 						isClearable
 						noOptionsMessage={() => 'Kein Publisher gefunden'}
 					/>
+					Publisher nicht gefunden? <a href="/publisher/anlage">Hier</a>{' '}
+					anlegen.
 				</div>
 			</div>
 
