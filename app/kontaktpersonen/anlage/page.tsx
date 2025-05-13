@@ -24,6 +24,8 @@ export default function ContactPersonCreateForm() {
 	const searchParams = useSearchParams();
 	const publisherIdFromUrl = searchParams.get('publisherId');
 	const [message, setMessage] = useState('');
+	const [isMounted, setIsMounted] = useState(false);
+
 	const [publisherOptions, setPublisherOptions] = useState<
 		{ value: number; label: string }[]
 	>([]);
@@ -56,7 +58,9 @@ export default function ContactPersonCreateForm() {
 		}
 		loadOptions();
 	}, [publisherIdFromUrl]);
-
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		if (!selectedPublisher || !selectedSalutation || !selectedFormOfAddress) {
@@ -77,13 +81,15 @@ export default function ContactPersonCreateForm() {
 			<div className="inputs">
 				<div className="inputWrapper">
 					<label htmlFor="salutation">Anrede</label>
-					<Select
-						options={salutationOptions}
-						value={selectedSalutation}
-						onChange={setSelectedSalutation}
-						placeholder="Anrede wählen..."
-						isClearable
-					/>
+					{isMounted && (
+						<Select
+							options={salutationOptions}
+							value={selectedSalutation}
+							onChange={setSelectedSalutation}
+							placeholder="Anrede wählen..."
+							isClearable
+						/>
+					)}
 				</div>
 				<div className="inputWrapper">
 					<label htmlFor="firstName">Vorname</label>
@@ -99,13 +105,15 @@ export default function ContactPersonCreateForm() {
 				</div>
 				<div className="inputWrapper">
 					<label htmlFor="formOfAddress">Anredeform</label>
-					<Select
-						options={formOfAddressOptions}
-						value={selectedFormOfAddress}
-						onChange={setSelectedFormOfAddress}
-						placeholder="Anredeform wählen..."
-						isClearable
-					/>
+					{isMounted && (
+						<Select
+							options={formOfAddressOptions}
+							value={selectedFormOfAddress}
+							onChange={setSelectedFormOfAddress}
+							placeholder="Anredeform wählen..."
+							isClearable
+						/>
+					)}
 				</div>
 				<div className="inputWrapper">
 					<label htmlFor="language">Sprache</label>
@@ -113,14 +121,16 @@ export default function ContactPersonCreateForm() {
 				</div>
 				<div className="inputWrapper">
 					<label>Publisher</label>
-					<Select
-						options={publisherOptions}
-						value={selectedPublisher}
-						onChange={setSelectedPublisher}
-						placeholder="Publisher wählen..."
-						isClearable
-						noOptionsMessage={() => 'Kein Publisher gefunden'}
-					/>
+					{isMounted && (
+						<Select
+							options={publisherOptions}
+							value={selectedPublisher}
+							onChange={setSelectedPublisher}
+							placeholder="Publisher wählen..."
+							isClearable
+							noOptionsMessage={() => 'Kein Publisher gefunden'}
+						/>
+					)}
 					Publisher nicht gefunden? <a href="/publisher/anlage">Hier</a>{' '}
 					anlegen.
 				</div>

@@ -6,6 +6,8 @@ import { addGame, getPublisherOptions } from './gameAnlageServerFunctions';
 
 export default function GameCreateForm() {
 	const [message, setMessage] = useState('');
+
+	const [isMounted, setIsMounted] = useState(false);
 	const [publisherOptions, setPublisherOptions] = useState<
 		{ value: number; label: string }[]
 	>([]);
@@ -21,7 +23,9 @@ export default function GameCreateForm() {
 		}
 		loadOptions();
 	}, []);
-
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		if (!selectedPublisher) {
@@ -84,14 +88,16 @@ export default function GameCreateForm() {
 
 				<div className="inputWrapper">
 					<label>Publisher</label>
-					<Select
-						options={publisherOptions}
-						value={selectedPublisher}
-						onChange={setSelectedPublisher}
-						placeholder="Publisher wählen..."
-						isClearable
-						noOptionsMessage={() => 'Kein Publisher gefunden'}
-					/>
+					{isMounted && (
+						<Select
+							options={publisherOptions}
+							value={selectedPublisher}
+							onChange={setSelectedPublisher}
+							placeholder="Publisher wählen..."
+							isClearable
+							noOptionsMessage={() => 'Kein Publisher gefunden'}
+						/>
+					)}
 					Publisher nicht gefunden? <a href="/publisher/anlage">Hier</a>{' '}
 					anlegen.
 				</div>
