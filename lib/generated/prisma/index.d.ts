@@ -1113,21 +1113,18 @@ export namespace Prisma {
   export type PublisherMinAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
     language: string | null
   }
 
   export type PublisherMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
     language: string | null
   }
 
   export type PublisherCountAggregateOutputType = {
     id: number
     name: number
-    email: number
     language: number
     _all: number
   }
@@ -1144,21 +1141,18 @@ export namespace Prisma {
   export type PublisherMinAggregateInputType = {
     id?: true
     name?: true
-    email?: true
     language?: true
   }
 
   export type PublisherMaxAggregateInputType = {
     id?: true
     name?: true
-    email?: true
     language?: true
   }
 
   export type PublisherCountAggregateInputType = {
     id?: true
     name?: true
-    email?: true
     language?: true
     _all?: true
   }
@@ -1252,7 +1246,6 @@ export namespace Prisma {
   export type PublisherGroupByOutputType = {
     id: number
     name: string
-    email: string
     language: string
     _count: PublisherCountAggregateOutputType | null
     _avg: PublisherAvgAggregateOutputType | null
@@ -1278,7 +1271,6 @@ export namespace Prisma {
   export type PublisherSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
     language?: boolean
     contacts?: boolean | Publisher$contactsArgs<ExtArgs>
     games?: boolean | Publisher$gamesArgs<ExtArgs>
@@ -1288,25 +1280,22 @@ export namespace Prisma {
   export type PublisherSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
     language?: boolean
   }, ExtArgs["result"]["publisher"]>
 
   export type PublisherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
     language?: boolean
   }, ExtArgs["result"]["publisher"]>
 
   export type PublisherSelectScalar = {
     id?: boolean
     name?: boolean
-    email?: boolean
     language?: boolean
   }
 
-  export type PublisherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "language", ExtArgs["result"]["publisher"]>
+  export type PublisherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "language", ExtArgs["result"]["publisher"]>
   export type PublisherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     contacts?: boolean | Publisher$contactsArgs<ExtArgs>
     games?: boolean | Publisher$gamesArgs<ExtArgs>
@@ -1324,7 +1313,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      email: string
       language: string
     }, ExtArgs["result"]["publisher"]>
     composites: {}
@@ -1753,7 +1741,6 @@ export namespace Prisma {
   interface PublisherFieldRefs {
     readonly id: FieldRef<"Publisher", 'Int'>
     readonly name: FieldRef<"Publisher", 'String'>
-    readonly email: FieldRef<"Publisher", 'String'>
     readonly language: FieldRef<"Publisher", 'String'>
   }
     
@@ -2236,6 +2223,7 @@ export namespace Prisma {
     salutation: string | null
     firstName: string | null
     lastName: string | null
+    email: string | null
     formOfAddress: string | null
     language: string | null
     publisherId: number | null
@@ -2246,6 +2234,7 @@ export namespace Prisma {
     salutation: string | null
     firstName: string | null
     lastName: string | null
+    email: string | null
     formOfAddress: string | null
     language: string | null
     publisherId: number | null
@@ -2256,6 +2245,7 @@ export namespace Prisma {
     salutation: number
     firstName: number
     lastName: number
+    email: number
     formOfAddress: number
     language: number
     publisherId: number
@@ -2278,6 +2268,7 @@ export namespace Prisma {
     salutation?: true
     firstName?: true
     lastName?: true
+    email?: true
     formOfAddress?: true
     language?: true
     publisherId?: true
@@ -2288,6 +2279,7 @@ export namespace Prisma {
     salutation?: true
     firstName?: true
     lastName?: true
+    email?: true
     formOfAddress?: true
     language?: true
     publisherId?: true
@@ -2298,6 +2290,7 @@ export namespace Prisma {
     salutation?: true
     firstName?: true
     lastName?: true
+    email?: true
     formOfAddress?: true
     language?: true
     publisherId?: true
@@ -2393,10 +2386,11 @@ export namespace Prisma {
   export type ContactGroupByOutputType = {
     id: number
     salutation: string
-    firstName: string
-    lastName: string
+    firstName: string | null
+    lastName: string | null
+    email: string
     formOfAddress: string
-    language: string
+    language: string | null
     publisherId: number
     _count: ContactCountAggregateOutputType | null
     _avg: ContactAvgAggregateOutputType | null
@@ -2424,6 +2418,7 @@ export namespace Prisma {
     salutation?: boolean
     firstName?: boolean
     lastName?: boolean
+    email?: boolean
     formOfAddress?: boolean
     language?: boolean
     publisherId?: boolean
@@ -2435,6 +2430,7 @@ export namespace Prisma {
     salutation?: boolean
     firstName?: boolean
     lastName?: boolean
+    email?: boolean
     formOfAddress?: boolean
     language?: boolean
     publisherId?: boolean
@@ -2446,6 +2442,7 @@ export namespace Prisma {
     salutation?: boolean
     firstName?: boolean
     lastName?: boolean
+    email?: boolean
     formOfAddress?: boolean
     language?: boolean
     publisherId?: boolean
@@ -2457,12 +2454,13 @@ export namespace Prisma {
     salutation?: boolean
     firstName?: boolean
     lastName?: boolean
+    email?: boolean
     formOfAddress?: boolean
     language?: boolean
     publisherId?: boolean
   }
 
-  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "salutation" | "firstName" | "lastName" | "formOfAddress" | "language" | "publisherId", ExtArgs["result"]["contact"]>
+  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "salutation" | "firstName" | "lastName" | "email" | "formOfAddress" | "language" | "publisherId", ExtArgs["result"]["contact"]>
   export type ContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     publisher?: boolean | PublisherDefaultArgs<ExtArgs>
   }
@@ -2481,10 +2479,11 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       salutation: string
-      firstName: string
-      lastName: string
+      firstName: string | null
+      lastName: string | null
+      email: string
       formOfAddress: string
-      language: string
+      language: string | null
       publisherId: number
     }, ExtArgs["result"]["contact"]>
     composites: {}
@@ -2914,6 +2913,7 @@ export namespace Prisma {
     readonly salutation: FieldRef<"Contact", 'String'>
     readonly firstName: FieldRef<"Contact", 'String'>
     readonly lastName: FieldRef<"Contact", 'String'>
+    readonly email: FieldRef<"Contact", 'String'>
     readonly formOfAddress: FieldRef<"Contact", 'String'>
     readonly language: FieldRef<"Contact", 'String'>
     readonly publisherId: FieldRef<"Contact", 'Int'>
@@ -4493,7 +4493,6 @@ export namespace Prisma {
   export const PublisherScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    email: 'email',
     language: 'language'
   };
 
@@ -4505,6 +4504,7 @@ export namespace Prisma {
     salutation: 'salutation',
     firstName: 'firstName',
     lastName: 'lastName',
+    email: 'email',
     formOfAddress: 'formOfAddress',
     language: 'language',
     publisherId: 'publisherId'
@@ -4543,6 +4543,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4615,7 +4623,6 @@ export namespace Prisma {
     NOT?: PublisherWhereInput | PublisherWhereInput[]
     id?: IntFilter<"Publisher"> | number
     name?: StringFilter<"Publisher"> | string
-    email?: StringFilter<"Publisher"> | string
     language?: StringFilter<"Publisher"> | string
     contacts?: ContactListRelationFilter
     games?: GameListRelationFilter
@@ -4624,7 +4631,6 @@ export namespace Prisma {
   export type PublisherOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     language?: SortOrder
     contacts?: ContactOrderByRelationAggregateInput
     games?: GameOrderByRelationAggregateInput
@@ -4632,7 +4638,6 @@ export namespace Prisma {
 
   export type PublisherWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
     AND?: PublisherWhereInput | PublisherWhereInput[]
     OR?: PublisherWhereInput[]
     NOT?: PublisherWhereInput | PublisherWhereInput[]
@@ -4640,12 +4645,11 @@ export namespace Prisma {
     language?: StringFilter<"Publisher"> | string
     contacts?: ContactListRelationFilter
     games?: GameListRelationFilter
-  }, "id" | "email">
+  }, "id">
 
   export type PublisherOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     language?: SortOrder
     _count?: PublisherCountOrderByAggregateInput
     _avg?: PublisherAvgOrderByAggregateInput
@@ -4660,7 +4664,6 @@ export namespace Prisma {
     NOT?: PublisherScalarWhereWithAggregatesInput | PublisherScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Publisher"> | number
     name?: StringWithAggregatesFilter<"Publisher"> | string
-    email?: StringWithAggregatesFilter<"Publisher"> | string
     language?: StringWithAggregatesFilter<"Publisher"> | string
   }
 
@@ -4670,10 +4673,11 @@ export namespace Prisma {
     NOT?: ContactWhereInput | ContactWhereInput[]
     id?: IntFilter<"Contact"> | number
     salutation?: StringFilter<"Contact"> | string
-    firstName?: StringFilter<"Contact"> | string
-    lastName?: StringFilter<"Contact"> | string
+    firstName?: StringNullableFilter<"Contact"> | string | null
+    lastName?: StringNullableFilter<"Contact"> | string | null
+    email?: StringFilter<"Contact"> | string
     formOfAddress?: StringFilter<"Contact"> | string
-    language?: StringFilter<"Contact"> | string
+    language?: StringNullableFilter<"Contact"> | string | null
     publisherId?: IntFilter<"Contact"> | number
     publisher?: XOR<PublisherScalarRelationFilter, PublisherWhereInput>
   }
@@ -4681,10 +4685,11 @@ export namespace Prisma {
   export type ContactOrderByWithRelationInput = {
     id?: SortOrder
     salutation?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    firstName?: SortOrderInput | SortOrder
+    lastName?: SortOrderInput | SortOrder
+    email?: SortOrder
     formOfAddress?: SortOrder
-    language?: SortOrder
+    language?: SortOrderInput | SortOrder
     publisherId?: SortOrder
     publisher?: PublisherOrderByWithRelationInput
   }
@@ -4695,10 +4700,11 @@ export namespace Prisma {
     OR?: ContactWhereInput[]
     NOT?: ContactWhereInput | ContactWhereInput[]
     salutation?: StringFilter<"Contact"> | string
-    firstName?: StringFilter<"Contact"> | string
-    lastName?: StringFilter<"Contact"> | string
+    firstName?: StringNullableFilter<"Contact"> | string | null
+    lastName?: StringNullableFilter<"Contact"> | string | null
+    email?: StringFilter<"Contact"> | string
     formOfAddress?: StringFilter<"Contact"> | string
-    language?: StringFilter<"Contact"> | string
+    language?: StringNullableFilter<"Contact"> | string | null
     publisherId?: IntFilter<"Contact"> | number
     publisher?: XOR<PublisherScalarRelationFilter, PublisherWhereInput>
   }, "id">
@@ -4706,10 +4712,11 @@ export namespace Prisma {
   export type ContactOrderByWithAggregationInput = {
     id?: SortOrder
     salutation?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    firstName?: SortOrderInput | SortOrder
+    lastName?: SortOrderInput | SortOrder
+    email?: SortOrder
     formOfAddress?: SortOrder
-    language?: SortOrder
+    language?: SortOrderInput | SortOrder
     publisherId?: SortOrder
     _count?: ContactCountOrderByAggregateInput
     _avg?: ContactAvgOrderByAggregateInput
@@ -4724,10 +4731,11 @@ export namespace Prisma {
     NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Contact"> | number
     salutation?: StringWithAggregatesFilter<"Contact"> | string
-    firstName?: StringWithAggregatesFilter<"Contact"> | string
-    lastName?: StringWithAggregatesFilter<"Contact"> | string
+    firstName?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    lastName?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    email?: StringWithAggregatesFilter<"Contact"> | string
     formOfAddress?: StringWithAggregatesFilter<"Contact"> | string
-    language?: StringWithAggregatesFilter<"Contact"> | string
+    language?: StringNullableWithAggregatesFilter<"Contact"> | string | null
     publisherId?: IntWithAggregatesFilter<"Contact"> | number
   }
 
@@ -4816,7 +4824,6 @@ export namespace Prisma {
 
   export type PublisherCreateInput = {
     name: string
-    email: string
     language: string
     contacts?: ContactCreateNestedManyWithoutPublisherInput
     games?: GameCreateNestedManyWithoutPublisherInput
@@ -4825,7 +4832,6 @@ export namespace Prisma {
   export type PublisherUncheckedCreateInput = {
     id?: number
     name: string
-    email: string
     language: string
     contacts?: ContactUncheckedCreateNestedManyWithoutPublisherInput
     games?: GameUncheckedCreateNestedManyWithoutPublisherInput
@@ -4833,7 +4839,6 @@ export namespace Prisma {
 
   export type PublisherUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     contacts?: ContactUpdateManyWithoutPublisherNestedInput
     games?: GameUpdateManyWithoutPublisherNestedInput
@@ -4842,7 +4847,6 @@ export namespace Prisma {
   export type PublisherUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     contacts?: ContactUncheckedUpdateManyWithoutPublisherNestedInput
     games?: GameUncheckedUpdateManyWithoutPublisherNestedInput
@@ -4851,86 +4855,90 @@ export namespace Prisma {
   export type PublisherCreateManyInput = {
     id?: number
     name: string
-    email: string
     language: string
   }
 
   export type PublisherUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
   }
 
   export type PublisherUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
   }
 
   export type ContactCreateInput = {
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
     publisher: PublisherCreateNestedOneWithoutContactsInput
   }
 
   export type ContactUncheckedCreateInput = {
     id?: number
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
     publisherId: number
   }
 
   export type ContactUpdateInput = {
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
     publisher?: PublisherUpdateOneRequiredWithoutContactsNestedInput
   }
 
   export type ContactUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
     publisherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ContactCreateManyInput = {
     id?: number
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
     publisherId: number
   }
 
   export type ContactUpdateManyMutationInput = {
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
     publisherId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5070,7 +5078,6 @@ export namespace Prisma {
   export type PublisherCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     language?: SortOrder
   }
 
@@ -5081,14 +5088,12 @@ export namespace Prisma {
   export type PublisherMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     language?: SortOrder
   }
 
   export type PublisherMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     language?: SortOrder
   }
 
@@ -5130,9 +5135,29 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type PublisherScalarRelationFilter = {
     is?: PublisherWhereInput
     isNot?: PublisherWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ContactCountOrderByAggregateInput = {
@@ -5140,6 +5165,7 @@ export namespace Prisma {
     salutation?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    email?: SortOrder
     formOfAddress?: SortOrder
     language?: SortOrder
     publisherId?: SortOrder
@@ -5155,6 +5181,7 @@ export namespace Prisma {
     salutation?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    email?: SortOrder
     formOfAddress?: SortOrder
     language?: SortOrder
     publisherId?: SortOrder
@@ -5165,6 +5192,7 @@ export namespace Prisma {
     salutation?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    email?: SortOrder
     formOfAddress?: SortOrder
     language?: SortOrder
     publisherId?: SortOrder
@@ -5173,6 +5201,24 @@ export namespace Prisma {
   export type ContactSumOrderByAggregateInput = {
     id?: SortOrder
     publisherId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -5356,6 +5402,10 @@ export namespace Prisma {
     connect?: PublisherWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type PublisherUpdateOneRequiredWithoutContactsNestedInput = {
     create?: XOR<PublisherCreateWithoutContactsInput, PublisherUncheckedCreateWithoutContactsInput>
     connectOrCreate?: PublisherCreateOrConnectWithoutContactsInput
@@ -5487,6 +5537,48 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5513,20 +5605,22 @@ export namespace Prisma {
   }
 
   export type ContactCreateWithoutPublisherInput = {
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
   }
 
   export type ContactUncheckedCreateWithoutPublisherInput = {
     id?: number
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
   }
 
   export type ContactCreateOrConnectWithoutPublisherInput = {
@@ -5594,10 +5688,11 @@ export namespace Prisma {
     NOT?: ContactScalarWhereInput | ContactScalarWhereInput[]
     id?: IntFilter<"Contact"> | number
     salutation?: StringFilter<"Contact"> | string
-    firstName?: StringFilter<"Contact"> | string
-    lastName?: StringFilter<"Contact"> | string
+    firstName?: StringNullableFilter<"Contact"> | string | null
+    lastName?: StringNullableFilter<"Contact"> | string | null
+    email?: StringFilter<"Contact"> | string
     formOfAddress?: StringFilter<"Contact"> | string
-    language?: StringFilter<"Contact"> | string
+    language?: StringNullableFilter<"Contact"> | string | null
     publisherId?: IntFilter<"Contact"> | number
   }
 
@@ -5635,7 +5730,6 @@ export namespace Prisma {
 
   export type PublisherCreateWithoutContactsInput = {
     name: string
-    email: string
     language: string
     games?: GameCreateNestedManyWithoutPublisherInput
   }
@@ -5643,7 +5737,6 @@ export namespace Prisma {
   export type PublisherUncheckedCreateWithoutContactsInput = {
     id?: number
     name: string
-    email: string
     language: string
     games?: GameUncheckedCreateNestedManyWithoutPublisherInput
   }
@@ -5666,7 +5759,6 @@ export namespace Prisma {
 
   export type PublisherUpdateWithoutContactsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     games?: GameUpdateManyWithoutPublisherNestedInput
   }
@@ -5674,14 +5766,12 @@ export namespace Prisma {
   export type PublisherUncheckedUpdateWithoutContactsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     games?: GameUncheckedUpdateManyWithoutPublisherNestedInput
   }
 
   export type PublisherCreateWithoutGamesInput = {
     name: string
-    email: string
     language: string
     contacts?: ContactCreateNestedManyWithoutPublisherInput
   }
@@ -5689,7 +5779,6 @@ export namespace Prisma {
   export type PublisherUncheckedCreateWithoutGamesInput = {
     id?: number
     name: string
-    email: string
     language: string
     contacts?: ContactUncheckedCreateNestedManyWithoutPublisherInput
   }
@@ -5712,7 +5801,6 @@ export namespace Prisma {
 
   export type PublisherUpdateWithoutGamesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     contacts?: ContactUpdateManyWithoutPublisherNestedInput
   }
@@ -5720,18 +5808,18 @@ export namespace Prisma {
   export type PublisherUncheckedUpdateWithoutGamesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     contacts?: ContactUncheckedUpdateManyWithoutPublisherNestedInput
   }
 
   export type ContactCreateManyPublisherInput = {
     id?: number
-    salutation: string
-    firstName: string
-    lastName: string
-    formOfAddress: string
-    language: string
+    salutation?: string
+    firstName?: string | null
+    lastName?: string | null
+    email?: string
+    formOfAddress?: string
+    language?: string | null
   }
 
   export type GameCreateManyPublisherInput = {
@@ -5748,28 +5836,31 @@ export namespace Prisma {
 
   export type ContactUpdateWithoutPublisherInput = {
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUncheckedUpdateWithoutPublisherInput = {
     id?: IntFieldUpdateOperationsInput | number
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUncheckedUpdateManyWithoutPublisherInput = {
     id?: IntFieldUpdateOperationsInput | number
     salutation?: StringFieldUpdateOperationsInput | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
     formOfAddress?: StringFieldUpdateOperationsInput | string
-    language?: StringFieldUpdateOperationsInput | string
+    language?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GameUpdateWithoutPublisherInput = {

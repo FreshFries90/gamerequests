@@ -22,7 +22,6 @@ datasource db {
 model Publisher {
   id       Int       @id @default(autoincrement())
   name     String
-  email    String    @unique
   contacts Contact[]
   language String
   games    Game[]
@@ -30,11 +29,12 @@ model Publisher {
 
 model Contact {
   id            Int       @id @default(autoincrement())
-  salutation    String
-  firstName     String
-  lastName      String
-  formOfAddress String
-  language      String
+  salutation    String    @default("Keine Angabe")
+  firstName     String?
+  lastName      String?
+  email         String    @default("")
+  formOfAddress String    @default("Förmlich")
+  language      String?   @default("Englisch")
   publisher     Publisher @relation(fields: [publisherId], references: [id])
   publisherId   Int
 }

@@ -19,22 +19,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model Publisher {
-  id        Int       @id @default(autoincrement())
-  name      String
-  email     String @unique
-  contacts  Contact[] 
-  language  String
-  games     Game[]    
+  id       Int       @id @default(autoincrement())
+  name     String
+  contacts Contact[]
+  language String
+  games    Game[]
 }
 
 model Contact {
-  id            Int      @id @default(autoincrement())
-  salutation    String   
-  firstName     String
-  lastName      String
-  formOfAddress String
-  language      String
+  id            Int       @id @default(autoincrement())
+  salutation    String  @default("Keine Angabe")
+  firstName     String?
+  lastName      String?
+  email         String @default("")
+  formOfAddress String  @default("Förmlich")
+  language      String?  @default ("Englisch")
   publisher     Publisher @relation(fields: [publisherId], references: [id])
   publisherId   Int
 }
@@ -42,14 +43,15 @@ model Contact {
 model Game {
   id          Int       @id @default(autoincrement())
   name        String
-  description String   
+  description String
   releaseDate DateTime
-  players     String 
-  consoles    String[] @default([]) 
-  tags        String[] @default([])
-  imageUrls   String[] @default([])  
-  videoUrls   String[] @default([])  
-  publisher   Publisher  @relation(fields: [publisherId], references: [id])
+  players     String
+  consoles    String[]  @default([])
+  tags        String[]  @default([])
+  imageUrls   String[]  @default([])
+  videoUrls   String[]  @default([])
+  publisher   Publisher @relation(fields: [publisherId], references: [id])
   publisherId Int
+
   @@unique([name, publisherId])
 }

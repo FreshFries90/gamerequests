@@ -20,10 +20,6 @@ export default function PublisherCreateForm() {
 					<input id="name" name="name" maxLength={100} required />
 				</div>
 				<div className="inputWrapper">
-					<label htmlFor="email">E-Mail</label>
-					<input id="email" name="email" type="email" required />
-				</div>
-				<div className="inputWrapper">
 					<label htmlFor="email">Sprache</label>
 					<select id="language" name="language" required>
 						<option value="">Bitte wählen</option>
