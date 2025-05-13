@@ -6,6 +6,7 @@ import {
 	addContact,
 	getPublisherOptions,
 } from './contactAnlageServerFunctions';
+import { useSearchParams } from 'next/navigation';
 
 const salutationOptions = [
 	{ value: 'Herr', label: 'Herr' },
@@ -20,6 +21,8 @@ const formOfAddressOptions = [
 ];
 
 export default function ContactPersonCreateForm() {
+	const searchParams = useSearchParams();
+	const publisherIdFromUrl = searchParams.get('publisherId');
 	const [message, setMessage] = useState('');
 	const [publisherOptions, setPublisherOptions] = useState<
 		{ value: number; label: string }[]
@@ -41,9 +44,18 @@ export default function ContactPersonCreateForm() {
 		async function loadOptions() {
 			const options = await getPublisherOptions();
 			setPublisherOptions(options);
+
+			if (publisherIdFromUrl) {
+				const preselected = options.find(
+					(option) => option.value === parseInt(publisherIdFromUrl, 10)
+				);
+				if (preselected) {
+					setSelectedPublisher(preselected);
+				}
+			}
 		}
 		loadOptions();
-	}, []);
+	}, [publisherIdFromUrl]);
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();

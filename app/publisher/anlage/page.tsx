@@ -1,15 +1,21 @@
 'use client';
 import { useState } from 'react';
 import { addPublisher } from './publisherAnlageServerFunctions';
+import { useRouter } from 'next/navigation';
 
 export default function PublisherCreateForm() {
 	const [message, setMessage] = useState('');
+	const router = useRouter();
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		const result = await addPublisher(formData);
-		setMessage(result.message);
+		if (result.success && result.id) {
+			router.push(`/kontaktpersonen/anlage?publisherId=${result.id}`);
+		} else {
+			setMessage(result.message || 'Fehler beim Speichern.');
+		}
 	}
 	return (
 		<form className="publisher-form" onSubmit={handleSubmit}>
@@ -28,7 +34,7 @@ export default function PublisherCreateForm() {
 					</select>
 				</div>
 			</div>
-			<button type="submit">Absenden</button>
+			<button type="submit">Weiter</button>
 			<strong className="message">{message}</strong>
 		</form>
 	);

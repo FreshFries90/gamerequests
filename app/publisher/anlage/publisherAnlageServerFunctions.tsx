@@ -21,7 +21,7 @@ export async function addPublisher(formData: FormData) {
 	const { name, language } = result.data;
 
 	// 4. In DB eintragen
-	await prisma.publisher.create({
+	const newPublisher = await prisma.publisher.create({
 		data: {
 			name,
 			language,
@@ -30,7 +30,7 @@ export async function addPublisher(formData: FormData) {
 
 	return {
 		success: true,
-		message:
-			'Publisher erfolgreich eingetragen! Du hast genauere Kontaktinfos? Jetzt <a href="/kontakt/anlage">eintragen</a> ',
+		message: 'Publisher erfolgreich eingetragen! ',
+		id: newPublisher.id,
 	};
 }
