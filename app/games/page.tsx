@@ -1,4 +1,5 @@
 import { getGames } from './gamesServerFunctions';
+import { MailButton } from './mail';
 
 export default async function GamePage() {
 	const games = await getGames();
@@ -24,6 +25,12 @@ export default async function GamePage() {
 							<td>{game.description}</td>
 							<td>{new Date(game.releaseDate).toLocaleDateString()}</td>
 							<td>{game.publisher.name}</td>
+							<MailButton
+								gameName={game.name}
+								emails={game.publisher.contacts
+									.map((c) => c.email)
+									.filter(Boolean)}
+							/>
 						</tr>
 					))}
 				</tbody>
