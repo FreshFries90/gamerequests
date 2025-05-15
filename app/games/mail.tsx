@@ -1,25 +1,39 @@
-import Link from 'next/link';
+'use client';
+
+import { useState } from 'react';
 
 type MailButtonProps = {
 	gameName: string;
 	emails: string[];
 };
-
+type MailResponse = {
+	success: boolean;
+	error?: string;
+};
 export function MailButton({ gameName, emails }: MailButtonProps) {
-	const subject = encodeURIComponent(`${gameName} Reviewcode`);
-	const body = encodeURIComponent(`Dear Sir or Madam,
+	const [status, setStatus] = useState('');
 
-my name is Stefan Fries. I'm the host of the german YouTube and Twitch-Channel FreshFries. You can find my Channels here: https://YouTube.com/FreshFries and on https://Twitch.tv/FreshFries. I would like to review ${gameName} on my Channels. Can you send me one or two keys of your game to start it? The second key would be for a little raffle for my community.
+	async function handleClick() {
+		setStatus('Senden...');
+		const res = await fetch('/api/sendMail', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ gameName, emails }),
+		});
 
-Best regards,
-Stefan Fries`);
+		const data = (await res.json()) as MailResponse;
 
-	const mailto =
-		`mailto:${emails.join(',')}` + `?subject=${subject}&body=${body}`;
+		if (data.success) {
+			setStatus('📨 Mail versandt');
+		} else {
+			setStatus('❌ Fehler beim Senden');
+		}
+	}
 
 	return (
 		<li>
-			<Link href={mailto}>📧 Mail senden</Link>
+			<button onClick={handleClick}>📧 Mail senden</button>
+			{status && <div>{status}</div>}
 		</li>
 	);
 }
