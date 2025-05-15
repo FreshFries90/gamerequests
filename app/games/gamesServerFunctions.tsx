@@ -12,3 +12,25 @@ export async function getGames() {
 		},
 	});
 }
+export async function getUpcomingGames() {
+	const today = new Date();
+
+	return await prisma.game.findMany({
+		where: {
+			releaseDate: {
+				gte: today,
+			},
+		},
+		orderBy: {
+			releaseDate: 'asc',
+		},
+		take: 5,
+		include: {
+			publisher: {
+				include: {
+					contacts: true,
+				},
+			},
+		},
+	});
+}
