@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 type MailButtonProps = {
 	gameName: string;
 	emails: string[];
@@ -15,5 +17,9 @@ Stefan Fries`);
 	const mailto =
 		`mailto:${emails.join(',')}` + `?subject=${subject}&body=${body}`;
 
-	return <a href={mailto}>📧 Mail senden</a>;
+	return (
+		<li>
+			<Link href={mailto}>📧 Mail senden</Link>
+		</li>
+	);
 }

@@ -9,32 +9,27 @@ export default async function GamePage() {
 	return (
 		<main>
 			<h1>Spieleübersicht</h1>
-			<table className="games-table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Beschreibung</th>
-						<th>Veröffentlichungsdatum</th>
-						<th>Publisher</th>
-					</tr>
-				</thead>
-				<tbody>
-					{games.map((game) => (
-						<tr key={game.id}>
-							<td>{game.name}</td>
-							<td>{game.description}</td>
-							<td>{new Date(game.releaseDate).toLocaleDateString()}</td>
-							<td>{game.publisher.name}</td>
-							<MailButton
-								gameName={game.name}
-								emails={game.publisher.contacts
-									.map((c) => c.email)
-									.filter(Boolean)}
-							/>
-						</tr>
-					))}
-				</tbody>
-			</table>
+
+			<ul className="game-list">
+				<li>Name</li>
+				<li>Beschreibung</li>
+				<li>Veröffentlichungsdatum</li>
+				<li>Publisher</li>
+				<li>Anfrage</li>
+			</ul>
+
+			{games.map((game) => (
+				<ul className="game-list" key={game.id}>
+					<li>{game.name}</li>
+					<li>{game.description}</li>
+					<li>{new Date(game.releaseDate).toLocaleDateString()}</li>
+					<li>{game.publisher.name}</li>
+					<MailButton
+						gameName={game.name}
+						emails={game.publisher.contacts.map((c) => c.email).filter(Boolean)}
+					/>
+				</ul>
+			))}
 		</main>
 	);
 }
