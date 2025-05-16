@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getGames } from './gamesServerFunctions';
 import { MailButton } from './mail';
 
@@ -9,7 +10,6 @@ export default async function GamePage() {
 	return (
 		<main>
 			<h1>Spieleübersicht</h1>
-
 			<ul className="game-list">
 				<li>Name</li>
 				<li>Beschreibung</li>
@@ -17,7 +17,6 @@ export default async function GamePage() {
 				<li>Publisher</li>
 				<li>Anfrage</li>
 			</ul>
-
 			{games.map((game) => (
 				<ul className="game-list" key={game.id}>
 					<li>{game.name}</li>
@@ -30,6 +29,7 @@ export default async function GamePage() {
 					/>
 				</ul>
 			))}
+			Game nicht gefunden? <Link href="/games/anlage">Hier</Link> hinzufügen
 		</main>
 	);
 }
