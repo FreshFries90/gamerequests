@@ -9,7 +9,6 @@ export default async function PublisherPage() {
 		<main>
 			<h1>Publisherübersicht</h1>
 			<ul className="publisher-list">
-				{/* Header-Zeile */}
 				<li className="publisher-header">
 					<span className="publisher-name">Publisher</span>
 					<span className="publisher-language">Sprache</span>
@@ -17,7 +16,6 @@ export default async function PublisherPage() {
 					<span className="publisher-actions">Aktionen</span>
 				</li>
 
-				{/* Daten-Zeilen */}
 				{publishers.map((pub) => (
 					<li key={pub.id} className="publisher-row">
 						<span className="publisher-name">{pub.name}</span>
