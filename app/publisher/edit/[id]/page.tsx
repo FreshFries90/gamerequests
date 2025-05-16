@@ -1,3 +1,4 @@
+import DeleteLink from '../../deleteLink';
 import { getPublisherById } from './publisherEditServerFunctions';
 
 type Props = {
@@ -23,7 +24,9 @@ export default async function EditPublisherPage({ params }: Props) {
 					<input name="language" defaultValue={publisher.language} required />
 				</div>
 				<button type="submit">Speichern</button>
+				<a href="/publisher">Zurück</a>
 			</form>
+			<DeleteLink id={publisher.id} />
 		</main>
 	);
 }
