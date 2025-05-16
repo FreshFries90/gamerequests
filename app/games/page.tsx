@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { getGames } from './gamesServerFunctions';
 import { MailButton } from './mail';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Spieleübersicht',
+};
+
 export default async function GamePage() {
 	const games = await getGames();
 

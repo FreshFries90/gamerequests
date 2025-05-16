@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { getPublishersWithContacts } from './publisherServerFunctions';
 import DeleteLink from './deleteLink';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Publisherübersicht',
+};
 
 export default async function PublisherPage() {
 	const publishers = await getPublishersWithContacts();

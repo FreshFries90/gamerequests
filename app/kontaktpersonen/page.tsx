@@ -1,5 +1,10 @@
 import Link from 'next/link';
 import { getAllContacts } from './contactServerFunctions';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Kontaktübersicht',
+};
 
 export default async function ContactPage() {
 	const contacts = await getAllContacts();

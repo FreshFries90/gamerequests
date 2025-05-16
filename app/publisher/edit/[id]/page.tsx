@@ -1,9 +1,15 @@
 import DeleteLink from '../../deleteLink';
 import { getPublisherById } from './publisherEditServerFunctions';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Publisher editieren',
+};
 
 type Props = {
 	params: { id: string };
 };
+
 export default async function EditPublisherPage({ params }: Props) {
 	const id = parseInt(params.id);
 	const publisher = await getPublisherById(id);

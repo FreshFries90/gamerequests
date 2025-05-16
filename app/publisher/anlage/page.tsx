@@ -2,7 +2,11 @@
 import { useState } from 'react';
 import { addPublisher } from './publisherAnlageServerFunctions';
 import { useRouter } from 'next/navigation';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+	title: 'Neuen Publisher anlegen',
+};
 export default function PublisherCreateForm() {
 	const [message, setMessage] = useState('');
 	const router = useRouter();
