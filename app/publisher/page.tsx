@@ -14,6 +14,7 @@ export default async function PublisherPage() {
 					<span className="publisher-name">Publisher</span>
 					<span className="publisher-language">Sprache</span>
 					<span className="publisher-contacts">Kontaktpersonen</span>
+					<span className="publisher-actions">Aktionen</span>
 				</li>
 
 				{/* Daten-Zeilen */}
@@ -31,6 +32,9 @@ export default async function PublisherPage() {
 											{index < pub.contacts.length - 1 && ', '}
 										</span>
 								  ))}
+						</span>
+						<span className="publisher-actions">
+							<Link href={`/publisher/edit/${pub.id}`}>Bearbeiten</Link>
 						</span>
 					</li>
 				))}
