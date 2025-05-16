@@ -3,11 +3,6 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { addGame, getPublisherOptions } from './gameAnlageServerFunctions';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-	title: 'Neues Spiel anlegen',
-};
 
 export default function GameCreateForm() {
 	const [message, setMessage] = useState('');

@@ -10,7 +10,7 @@ export default async function Home() {
 	const games = await getUpcomingGames();
 	return (
 		<main className="default-layout">
-			<h1>Hier könnt ihr die neuesten PC Games anfragen</h1>
+			<h1>Hier könnt ihr die neuesten Games anfragen</h1>
 			<h2>Baldige Releases:</h2>
 			<ul className="game-list">
 				<li>Name</li>

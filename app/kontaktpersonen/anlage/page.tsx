@@ -7,11 +7,6 @@ import {
 	getPublisherOptions,
 } from './contactAnlageServerFunctions';
 import { useSearchParams } from 'next/navigation';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-	title: 'Neuen Kontakt anlegen',
-};
 
 const salutationOptions = [
 	{ value: 'Herr', label: 'Herr' },

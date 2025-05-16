@@ -25,7 +25,7 @@ const linkTargets = [
 	{ text: 'Startseite', url: '/' },
 	{ text: 'Games', url: '/games' },
 	{ text: 'Publisher', url: '/publisher' },
-	{ text: 'Anfragen', url: '/anfragen' },
+	{ text: 'Kontaktpersonen', url: '/kontaktpersonen' },
 ] satisfies LinkTarget[];
 
 type Props = {

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAllContacts } from './contactServerFunctions';
 import type { Metadata } from 'next';
+import DeleteLink from './deleteLink';
 
 export const metadata: Metadata = {
 	title: 'Kontaktübersicht',
@@ -39,6 +40,7 @@ export default async function ContactPage() {
 						</span>
 						<span className="contact-actions">
 							<Link href={`/kontaktpersonen/edit/${c.id}`}>Bearbeiten</Link> |{' '}
+							<DeleteLink id={c.id} />
 						</span>
 					</li>
 				))}
