@@ -21,6 +21,7 @@ export default async function ContactPage() {
 					<span className="contact-language">Sprache</span>
 					<span className="contact-email">E-Mail</span>
 					<span className="contact-publisher">Publisher</span>
+					<span className="publisher-actions">Aktionen</span>
 				</li>
 
 				{/* Daten-Zeilen */}
@@ -35,6 +36,9 @@ export default async function ContactPage() {
 						</span>
 						<span className="contact-publisher">
 							{c.publisher?.name ?? '—'}
+						</span>
+						<span className="contact-actions">
+							<Link href={`/kontaktpersonen/edit/${c.id}`}>Bearbeiten</Link> |{' '}
 						</span>
 					</li>
 				))}
