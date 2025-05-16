@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPublishersWithContacts } from './publisherServerFunctions';
+import DeleteLink from './deleteLink';
 
 export default async function PublisherPage() {
 	const publishers = await getPublishersWithContacts();
@@ -32,7 +33,8 @@ export default async function PublisherPage() {
 								  ))}
 						</span>
 						<span className="publisher-actions">
-							<Link href={`/publisher/edit/${pub.id}`}>Bearbeiten</Link>
+							<Link href={`/publisher/edit/${pub.id}`}>Bearbeiten</Link> |{' '}
+							<DeleteLink id={pub.id} />
 						</span>
 					</li>
 				))}
